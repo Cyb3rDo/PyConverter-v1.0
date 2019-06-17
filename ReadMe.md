@@ -1,4 +1,4 @@
-Install pyhton if you don't have it : 
+Install python if you don't have it : 
 -----------------------------------
 
 sudo apt-get install python
