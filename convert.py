@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import traceback
 import os
 import sys
 import subprocess
@@ -79,8 +78,6 @@ def get_filename() :
             os.rename(filename, filename.replace(" ", "_"))
             sys.exit('The file have been renamed please re call convert operation.\nExiting ...\n')
 
-    # if in the filename it have space char we replace them with an underscore
-    #os.rename(filename, filename.replace(" ", "_"))
 
 def get_only_filename() :
     global filename
@@ -279,6 +276,31 @@ def convert_to_aif() :
     ret = -1
 
     filename_no_extensions += '.aif'
+    cmd = 'ffmpeg -i ' + filename + ' ' + '-qscale 0' + ' ' + filename_no_extensions
+    ret = subprocess.call(cmd, shell=True)
+    print('\nDone.')
+
+    if ret == 0 :
+        path_frame = LabelFrame(main_window, bd=2, text='Converted')
+        path_frame.pack(fill="both", expand=False)
+        Label(path_frame).pack()
+        file_opening = Label(main_window, text=path, anchor=W, bg='gold', width=len(path), pady =5)
+        file_opening.pack()
+    else :
+        path_frame = LabelFrame(main_window, bd=2, text='Error')
+        path_frame.pack(fill="both", expand=False)
+        Label(path_frame).pack()
+        file_opening = Label(main_window, text=path, anchor=W, bg='red', width=len(path), pady =5)
+        file_opening.pack()
+
+def convert_to_aac() :
+    global filename
+    global filename_no_extensions
+    global main_window
+    global path
+    ret = -1
+
+    filename_no_extensions += '.aac'
     cmd = 'ffmpeg -i ' + filename + ' ' + '-qscale 0' + ' ' + filename_no_extensions
     ret = subprocess.call(cmd, shell=True)
     print('\nDone.')

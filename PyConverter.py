@@ -86,6 +86,8 @@ def create_window():
     ogg_state = IntVar()
     global aif_state
     aif_state = IntVar()
+    global aac_state
+    aac_state = IntVar()
 
     # Images formats
     global bmp_state
@@ -151,6 +153,9 @@ def create_window():
     aif_button = Checkbutton(label_audio, text="To .aif", variable=aif_state)
     aif_button.pack(anchor=W)
 
+    aac_button = Checkbutton(label_audio, text="To .aac", variable=aac_state)
+    aac_button.pack(anchor=W)
+
     # Convert Button
     convert_button = Button(main_window, text="Convert", width=13, command=get_checkbutton_state)
     convert_button.pack(anchor=E)
@@ -201,6 +206,11 @@ def get_checkbutton_state() :
     if aif_button_state == True :
         get_only_filename()
         convert_to_aif()
+
+    aac_button_state = aac_state.get()
+    if aac_button_state == True :
+        get_only_filename()
+        convert_to_aac()
 
 # Convert Images
     bmp_button_state = bmp_state.get()
