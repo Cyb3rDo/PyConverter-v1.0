@@ -9,15 +9,18 @@ Then install Tkinter :
 sudo apt-get install python-tk
 
 
-Finally start the application with the command : 
------------------------------------------------
+Finally start the application with thoses commands : 
+---------------------------------------------------
 
-python PyConverter.py
+sudo chmod +x PyConverter.py
+
+./PyConverter.py
+
 
 
 Enjoy !
 
 
-![PyConverter](https://hebergeur-images.com/up/cd9e79f1b42a9d30db6cc2e8e3dc05e8.png)
+![PyConverter](https://hebergeur-images.com/up/28869e9c0472ff9cc60e5762e11a2ab3.png)
 
 
